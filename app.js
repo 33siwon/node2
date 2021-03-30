@@ -16,7 +16,13 @@ app.use(express.urlencoded({ extended : true}))
 
 
 
-app.get('/', (req,res)=>{
+app.get('/', (req,res,next)=>{
+    req.cookies
+    res.cookie('name', 'siwon' ,{
+        expires : new Date(),
+        httpOnly: true,
+        path:'/'
+    })
     res.sendFile(path.join(__dirname,'index.html'))
 })
 
